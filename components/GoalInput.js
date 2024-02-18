@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { StyleSheet, View, TextInput, Button } from 'react-native';
-const GoalInput = ({ addGoal }) => {
+import { StyleSheet, View, TextInput, Button, Modal } from 'react-native';
+const GoalInput = ({ addGoal, visible, onCancel }) => {
   const [enteredGoalText, setEnteredGoalText] = useState('');
 
   const goalInputHandler = (enteredText) => {
@@ -13,15 +13,24 @@ const GoalInput = ({ addGoal }) => {
   };
 
   return (
-    <View style={styles.inputContainer}>
-      <TextInput
-        placeholder="Your course goal!"
-        style={styles.textInput}
-        value={enteredGoalText}
-        onChangeText={goalInputHandler}
-      />
-      <Button title="Add Goal" onPress={addGoalHandler} />
-    </View>
+    <Modal visible={visible} animationType="slide">
+      <View style={styles.inputContainer}>
+        <TextInput
+          placeholder="Your course goal!"
+          style={styles.textInput}
+          value={enteredGoalText}
+          onChangeText={goalInputHandler}
+        />
+        <View style={styles.buttonContainer}>
+          <View style={styles.button}>
+            <Button title="Add Goal" onPress={addGoalHandler} />
+          </View>
+          <View style={styles.button}>
+            <Button title="Cancel" onPress={onCancel} />
+          </View>
+        </View>
+      </View>
+    </Modal>
   );
 };
 
@@ -30,17 +39,26 @@ export default GoalInput;
 const styles = StyleSheet.create({
   inputContainer: {
     flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    flexDirection: 'column',
+    justifyContent: 'center',
     alignItems: 'center',
     marginBottom: 24,
+    padding: 16,
     borderBottomWidth: 1,
     borderBottomColor: '#cccccc',
   },
   textInput: {
     borderWidth: 1,
     borderColor: '#cccccc',
-    width: '70%',
+    width: '100%',
     padding: 8,
+  },
+  buttonContainer: {
+    marginTop: 16,
+    flexDirection: 'row',
+  },
+  button: {
+    width: 100,
+    marginHorizontal: 8,
   },
 });

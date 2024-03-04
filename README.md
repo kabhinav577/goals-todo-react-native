@@ -14,8 +14,8 @@ This is a simple mobile application built with React Native to help users manage
 
 Include a few screenshots or GIFs demonstrating the app's user interface and key features.
 
-![Screenshot 1](./screenshots/home.png)
-![Screenshot 2](./screenshots/add.png)
+<img src="./screenshots/home.png" alt="Home Screen" width="300" height="600" />
+<img src="./screenshots/add.png" alt="Adding Todo Screen" width="300" height="600" />
 
 ## Acknowledgements
 
